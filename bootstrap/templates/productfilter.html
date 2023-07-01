@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<style>
+    .left {
+        height: 650px;
+        width: 23%;
+        background-color: rgb(109, 185, 109);
+        float: left;
+    }
+
+    .container {
+        height: max-content;
+        width: 75%;
+        float: right;
+        background-color:lavender;
+
+    }
+</style>
+
+<!-- sidebar -->
+<div class="left">
+    <center>
+        <h1>Subcategory </h1> <br>
+        {% for row in sublist %}
+        <h1 style=color:white>{{row.subcatnm}}</h1>
+        {% endfor %}
+    </center>
+</div>
+
+<!-- content -->
+<div class="container">
+    <form  method="GET" action="/productfilter/?subcatnm={{row.subcatnm}}">
+        <center>
+            <h1>Filter By Price </h1>
+            <input type="text" name="startprice" placeholder="Enter Starting Price">
+            <input type="text" name="endprice"  placeholder="Enter Ending  Price">
+            <input type="hidden" name="subcatnm" value="{{subcatnm}}">
+            <input type="submit" value="Filter">
+        </center>
+    </form>
+</div> 
+
+
+<br><br><br><br><br><br>
+<center>
+<h2>View Product-{{subcatnm}}</h2> <br>
+
+<div class="row mx-auto">
+    {% for row in vlist %}
+    <div class="card mx-auto" style="width: 18rem;">
+        <center>
+            <img src="{{media_url}}{{row.subcaticon}}" height="200" width="180"><br>
+        </center>
+
+        <div class="card-body" style="color: crimson;">
+            <p class="card-text">{{row.subcatnm}} </p>
+            <p class="card-text"> {{row.sprice}} </p>
+            <p class="card-text">{{row.description}} </p>
+            <a href="/productfilter/" class="btn btn-light border btn-sm"> click </a>
+        </div>
+
+    </div>
+    {% endfor %}
+</center>
+{% endblock %}

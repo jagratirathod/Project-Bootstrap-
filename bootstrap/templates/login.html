@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<font>{{output}}</font>
+<center> <br><br>
+    <h1 style="color:blue; font-size:larger; ">Login  Here !</h1>
+    <div class="col-lg-5 mx-auto border rounded p-5 m-5" style="background-color:cadetblue;">
+        <form method="POST" action="/login/">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label  class="form-label">Email address</label>
+                <input required type="email" name="email" placeholder="enter email" class="form-control"  aria-describedby="emailHelp">
+            </div> <br>
+            
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input required type="password" name="password"  placeholder="enter password" class="form-control" id="exampleInputPassword1">
+            </div> <br>
+
+            <label>Remember me </label>
+            <input type="checkbox" name="chk"  value="remember"> <br><br>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</center>
+
+{% endblock %}

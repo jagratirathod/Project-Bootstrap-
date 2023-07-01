@@ -1,0 +1,55 @@
+{% extends 'adminhome.html' %}
+
+
+{% block content %}
+
+<center>
+
+    <h1 style="color:rgb(70, 88, 194)">Add Sub-category</h1>
+    <font>{{output}}</font>
+    <div class="col-lg-5 mx-auto border rounded p-5 m-5" style="background-color:cadetblue;">
+
+        <form method="POST" action="/myadmin/subcategory/" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Category Name : </label>
+                <select name=catnm>
+                    <option>select category</option>
+                    {% for row in list %}
+                    <option>{{row.catnm}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sub-Category Name</label>
+                <input required type="subcategory" name="subcatnm" placeholder="enter sub Category name"
+                    class="form-control" aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Category Icon</label>
+                <input required type="file" name="subcaticon" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description </label>
+                <input required type="descrip" name="description" placeholder="enter description" class="form-control"
+                    aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input required type="price" name="sprice" placeholder="enter Price" class="form-control"
+                    aria-describedby="emailHelp">
+            </div>
+
+            <button type="submit" class="btn btn-primary align:right">Add Sub-Category</button>
+        </form>
+    </div>
+    
+</center>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<br><br><br><br>
+<center>
+    <h1 style="color: rgb(78, 78, 231);">Welcome To Admin Panel</h1>
+</center>
+{% endblock %}
+
+
+{% block menu %}
+<li><a href="/myadmin/" class="current">Admin Home</a></li> 
+<li><a href="/myadmin/managecustomer/">Manage customer</a></li>
+<li><a href="/myadmin/addcategory/">Category</a></li>
+<li><a href="/myadmin/subcategory/">Sub-Category</a></li>
+<li><a href="/myadmin/changpass/">Change Password</a></li>
+<li><a href="/login/">Logout</a></li>
+<div style=" color:white;margin-left: 500px; font-size:18px;"> Welcome Admin : {{semail}}</div>
+{% endblock %}

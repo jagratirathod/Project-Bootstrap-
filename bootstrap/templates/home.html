@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<style>
+    #left {
+        height: 930px;
+        width: 20%;
+        float: left;
+        background-color: skyblue;
+
+    }
+
+    #container {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<div id="container">
+
+    <!-- category sidebar-->
+    <div id="left">
+        <center>
+            <h1>Category</h1> <br><br>
+            {% for row in list %}
+            <a href="/viewsubcategory/?catnm={{row.catnm}}">
+                <p>{{row.catnm}}</p>
+            </a> <br>
+            {% endfor %}
+        </center>
+    </div>
+
+    <!-- full side -->
+
+    <center>
+        <h1 style="color: blue;">Category</h1> <br><br>
+
+        <div class="row mx-auto">
+            {% for row in list %}
+            <div class="card mx-auto" style="width: 18rem;">
+                <center> <img src="{{media_url}}{{row.caticonname}}" height="200" width="180"><br></center>
+
+                <div class="card-body">
+                    <p class="card-text"> {{row.catnm}} </p>
+                    <a href="/viewsubcategory/?catnm={{row.catnm}}" class="btn btn-light border btn-sm">see
+                        more..</a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </center>
+
+
+    {% endblock %}

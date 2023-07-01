@@ -1,0 +1,32 @@
+{% extends 'adminhome.html' %}
+
+{% block content %}
+<font>{{output}}</font>
+<center> <br><br>
+    <h1 style="color:blue; font-size:larger; ">Change Password </h1>
+    <div class="col-lg-5 mx-auto border rounded p-5 m-5" style="background-color:cadetblue;">
+        <form method="POST" action="/myadmin/changpass/">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Old Password</label>
+                <input required type="text" name="oldpass" placeholder="enter old Password" class="form-control"
+                    aria-describedby="emailHelp">
+            </div> <br>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">New Password</label>
+                <input required type="text" name="newpass" placeholder="enter new password" class="form-control"
+                    id="exampleInputPassword1">
+            </div> <br>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Conform Password</label>
+                <input required type="text" name="conformpass" placeholder="enter conform password" class="form-control" id="exampleInputPassword1">
+            </div> <br>
+
+            <button type="submit" class="btn btn-primary">change Password</button>
+        </form>
+    </div>
+</center>
+
+{% endblock %}

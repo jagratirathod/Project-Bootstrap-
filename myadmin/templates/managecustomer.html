@@ -1,0 +1,50 @@
+{% extends 'adminhome.html' %}
+
+
+{% block content %}
+<center> <br><br>
+    <h1 style="color:blue;">View & Manage Customer</h1>
+    <div class="col-lg-5 mx-auto border rounded p-5 m-5" style="background-color:cadetblue; width: 950px;">
+
+        <table width=850px; cellpadding="15px" ; cellspacing="15px">
+            <tr>
+                <th>Reg Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>E-mail</th>
+                <th>Password</th>
+                <th>Mobile</th>
+                <th>Info</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            {% for row in customer %}
+            <tr style="color:white; font-size: large;">
+                <td>{{row.regid}}</td>
+                <td>{{row.firstnm}}</td>
+                <td>{{row.lastnm}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.password}}</td>
+                <td>{{row.mobile}}</td>
+                <td>{{row.info}}</td>
+
+                <td>
+                    {% if row.status %}
+                    <a href="/myadmin/customerstatus?regid={{row.regid}}&S=block" style="color: red;">Block User</a>
+                    {% else %}
+                    <a href="/myadmin/customerstatus?regid={{row.regid}}&S=Verify" style="color: darkgreen;">Verify user</a>
+                    {% endif %}
+                </td>
+
+                <td><a href="/myadmin/manageuserstatus?regid={{row.regid}}&S=delete" style="color: blue;">Delete</td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</center>
+
+{% endblock %}

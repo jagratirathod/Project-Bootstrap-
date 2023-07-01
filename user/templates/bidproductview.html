@@ -1,0 +1,51 @@
+{% extends 'userhome.html' %}
+
+{% block content %}
+
+<center> <br><br>
+    <h1 style="color:blue;">Make Your Own Bid Here! </h1>
+
+    <div class="col-lg-5 mx-auto border rounded p-5 m-5" style="background-color:cadetblue;">
+        <form method="POST" action="/user/mybid/">
+            {% csrf_token %}
+
+            {% if bstatus %}
+
+            <div class="mb-3">
+                <label class="form-label">Product Id :</label>
+                <input required type="text" name="pid" class="form-control" value="{{pid}}" aria-describedby="emailHelp"
+                    readonly>
+            </div> <br>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Base Price :</label>
+                <input required type="text" name="price" class="form-control" value="{{price}}"
+                    id="exampleInputPassword1" readonly>
+            </div> <br>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Current Price :</label>
+                <input required type="text" name="cprice" class="form-control" id="exampleInputPassword1"
+                    value="{{cprice}}" readonly>
+            </div> <br>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Your Bid Price :</label>
+                <input required type="text" name="bidprice" placeholder="enter Price" class="form-control"
+                    id="exampleInputPassword1">
+            </div> <br>
+
+            <button type="submit" class="btn btn-primary">Make bid</button>
+</center>
+</form>
+
+
+{% else %}
+<center>
+    <h1>Bidding Completed</h1>
+</center>
+<a href="/user/bidhistory/?pid={{pid}}">View Biding History </a>
+{% endif %}
+</div>
+
+{% endblock %}

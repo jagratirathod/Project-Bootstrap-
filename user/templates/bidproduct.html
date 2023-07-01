@@ -1,0 +1,51 @@
+{% extends 'userhome.html' %}
+
+
+{% block content %}
+<div style="height:1000px; ">
+
+    <center>
+        <h2 style="color:blue"> View Bidding Product !</h2>  <br><br>
+        
+        <table cellpadding=15px cellspacing=20px>
+            <tr>
+                <th>Product Id</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Sub Category</th>
+                <th>Description</th>
+                <th>Base Price</th>
+                <th>Product Icon</th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td colspan="15">
+                    <hr>
+                </td>
+            </tr>
+
+            {% for row in plist %}
+            <tr>
+                <td>{{row.pid}}</td>
+                <td>{{row.title}}</td>
+                <td>{{row.category}}</td>
+                <td>{{row.subcategory}}</td>
+                <td>{{row.description}}</td>
+                <td>{{row.price}}</td>
+                <td><img src="{{media_url}}{{row.file1}}" height="50" width="70"></td>
+                <td><a href="/user/bidproductview/?pid={{row.pid}}&price={{row.price}}">Bid Product</a></td>
+            </tr>
+
+            <tr>
+                <td colspan="9">
+                    <hr>
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+    </center>
+</div>
+
+{% endblock %}

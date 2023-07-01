@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+<style>
+    #left {
+        height: 930px;
+        width: 20%;
+        float: left;
+        background-color: skyblue;
+
+    }
+
+    #container {
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+<div id="container">
+
+    <!-- category sidebar-->
+    <div id="left">
+        <center>
+            <h1> sub Category</h1> <br>
+            {% for row in subcatlist %}
+            <a href="/productfilter/?subcatnm={{row.subcatnm}}"><p>{{row.subcatnm}}</p></a> 
+            
+            {% endfor %}
+        </center>
+
+    </div>
+
+    <!-- full side -->
+    <center>
+        <h1 style="color: blue;">Sub-Category</h1> <br><br>
+
+        <div class="row mx-auto">
+            {% for row in slist %}
+            <div class="card mx-auto" style="width: 18rem;">
+                <center>
+                    <img src="{{media_url}}{{row.subcaticon}}" height="200" width="180"><br>
+                </center>
+
+                <div class="card-body" style="color: crimson;">
+                    <p class="card-text">{{row.subcatnm}} </p>
+                    <p class="card-text"> {{row.sprice}} </p>
+                    <p class="card-text">{{row.description}} </p>
+                    <a href="/productfilter/?subcatnm={{row.subcatnm}}" class="btn btn-light border btn-sm"> Add Cart </a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </center>
+    {% endblock %}

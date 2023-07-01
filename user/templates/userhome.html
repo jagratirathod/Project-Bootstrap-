@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %} 
+<center> <br><br><br>
+<h1 style="color: rgb(78, 78, 231);">Welcome To User Panel</h1>
+</center>
+{% endblock %}
+
+{% block menu %}
+<li><a href="/user/" class="current">User home</a></li>
+<li><a href="/user/changepassworduser/">Change Password</a></li>
+<li><a href="/user/addproduct/">Add Product</a></li>
+<li><a href="/user/viewproduct/">View Product</a></li>
+<li><a href="/user/bidproduct/">Bidproduct</a></li>
+<li><a href="/login/">Logout</a></li> 
+<div style=" color:white;margin-left: 500px; font-size:18px;"> Welcome User : {{semail}}</div>
+{% endblock %}

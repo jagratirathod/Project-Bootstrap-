@@ -1,0 +1,77 @@
+{%extends 'userhome.html'%}
+
+{% block content %}
+
+<script>
+    function fetchsubcategory(c) {
+        var xhttp = new XMLHttpRequest()
+        xhttp.open("GET", "/user/fetchSubcategoryAJAX/?catnm=" + c, true)
+        xhttp.send()
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                document.getElementById("response").innerHTML = xhttp.responseText
+            }
+        }
+
+    }
+
+</script>
+
+<center>
+
+    <h1 style="color:rgb(70, 88, 194)">Add Product</h1>
+    <font>{{output}}</font>
+    <div class="col-lg-5 mx-auto border rounded p-5 m-5" style="background-color:cadetblue;">
+
+        <form method="POST" action="/user/addproduct/" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Category Name : </label>
+                <select name="category" onchange="fetchsubcategory (this.value)">
+                    <option>select category</option>
+                    {% for row in lst %}
+                    <option>{{row.catnm}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sub-Category Name : </label>
+                <select name="subcategory" id="response">
+                    <option>select subcategory </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Title </label>
+                <input required type="title" name="title" placeholder="enter title" class="form-control"
+                    aria-describedby="emailHelp">
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Product Image</label>
+                <input required type="file" name="file1" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description </label>
+                <input required type="descrip" name="description" placeholder="enter description" class="form-control"
+                    aria-describedby="emailHelp">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input required type="price" name="price" placeholder="enter Price" class="form-control"
+                    aria-describedby="emailHelp">
+            </div>
+
+            <button type="submit" class="btn btn-primary align:right">Add Product</button>
+        </form>
+    </div>
+
+</center>
+
+{% endblock %}

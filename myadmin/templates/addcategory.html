@@ -1,0 +1,34 @@
+{% extends 'adminhome.html' %}
+
+
+{% block content %}
+
+<center> <br><br>
+    
+    <h1 style="color:rgb(70, 88, 194)">Add category Here !</h1>
+        
+    <div class="col-lg-5 mx-auto border rounded p-5 m-5" style="background-color:cadetblue;">
+ 
+        <form method="POST" action="/myadmin/addcategory/" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Category Name</label>
+                <input required type="category" name="catnm" placeholder="enter Category" class="form-control"
+                    aria-describedby="emailHelp">
+            </div>    <br>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Category Icon</label>
+                <input required type="file" name="caticon" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Category</button>
+        
+        </form>
+        </div>
+        
+        <font>{{output}}</font>
+</center>
+
+{% endblock %}
